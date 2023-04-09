@@ -1,0 +1,4 @@
+name = "iso_fortran_binding_m"
+version = "0.1.0"
+author = "Damian Rouson"
+maintainer = "rouson@lbl.gov"
