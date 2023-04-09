@@ -2,3 +2,6 @@ name = "iso_fortran_binding_m"
 version = "0.1.0"
 author = "Damian Rouson"
 maintainer = "rouson@lbl.gov"
+
+[dev-dependencies]
+sourcery = {git = "https://github.com/sourceryinstitute/sourcery", tag = "3.6.0"}
