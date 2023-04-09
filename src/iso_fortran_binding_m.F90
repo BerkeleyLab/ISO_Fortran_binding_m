@@ -1,10 +1,19 @@
 module iso_fortran_binding_m
-  use iso_c_binding, only : c_ptr, c_size_t, c_int, c_int8_t, c_int16_t, c_ptrdiff_t, c_f_pointer
+#ifdef __GFORTRAN__
+  use iso_c_binding, only : c_ptr, c_size_t, c_int, c_int8_t, c_int16_t, c_f_pointer, c_ptrdiff_t
+#elif defined(NAGFOR)
+  use iso_c_binding, only : c_ptr, c_size_t, c_int, c_int8_t, c_int16_t, c_f_pointer, c_long
+#endif
   use get_cfi_cdesc_t_h_m, only : get_cfi_cdesc_t
   implicit none
 
 #ifdef __GFORTRAN__
   integer, parameter :: CFI_index_t = c_ptrdiff_t 
+  integer, parameter :: CFI_rank_t = c_int8_t
+  integer, parameter :: CFI_attribute_t = c_int8_t
+  integer, parameter :: CFI_type_t = c_int16_t
+#elif defined(NAGFOR)
+  integer, parameter :: CFI_index_t = c_long
   integer, parameter :: CFI_rank_t = c_int8_t
   integer, parameter :: CFI_attribute_t = c_int8_t
   integer, parameter :: CFI_type_t = c_int16_t
@@ -21,6 +30,10 @@ module iso_fortran_binding_m
     integer(c_size_t) elem_len
     integer(c_int) version
 #ifdef __GFORTRAN__
+    integer(CFI_rank_t) rank
+    integer(CFI_attribute_t) attribute
+    integer(CFI_type_t) type
+#elif defined(NAGFOR)
     integer(CFI_rank_t) rank
     integer(CFI_attribute_t) attribute
     integer(CFI_type_t) type
@@ -108,7 +121,7 @@ module iso_fortran_binding_m
 
 contains
 
-  module function base_addr(CFI_cdesc)
+  function base_addr(CFI_cdesc)
     type(*), dimension(..), intent(in) :: CFI_cdesc
     type(CFI_cdesc_t), pointer :: ptr
     type(c_ptr)  base_addr
@@ -116,7 +129,7 @@ contains
     base_addr  = ptr%base_addr
   end function
 
-  module function elem_len(CFI_cdesc)
+  function elem_len(CFI_cdesc)
     type(*), dimension(..), intent(in) :: CFI_cdesc
     type(CFI_cdesc_t), pointer :: ptr
     integer(c_size_t) elem_len
@@ -124,7 +137,7 @@ contains
     elem_len = ptr%elem_len 
   end function
 
-  module function version(CFI_cdesc)
+  function version(CFI_cdesc)
     type(*), dimension(..), intent(in) :: CFI_cdesc
     type(CFI_cdesc_t), pointer :: ptr
     integer(c_int) version
@@ -132,7 +145,7 @@ contains
     version = ptr%version
   end function
 
-  module function rank(CFI_cdesc)
+  function rank(CFI_cdesc)
     type(*), dimension(..), intent(in) :: CFI_cdesc
     type(CFI_cdesc_t), pointer :: ptr
     integer(CFI_rank_t) rank
@@ -140,7 +153,7 @@ contains
     rank = ptr%rank
   end function
 
-  module function type(CFI_cdesc)
+  function type(CFI_cdesc)
     type(*), dimension(..), intent(in) :: CFI_cdesc
     type(CFI_cdesc_t), pointer :: ptr
     integer(CFI_type_t) type
@@ -148,7 +161,7 @@ contains
     type = ptr%type
   end function
 
-  module function attribute(CFI_cdesc)
+  function attribute(CFI_cdesc)
     type(*), dimension(..), intent(in) :: CFI_cdesc
     type(CFI_cdesc_t), pointer :: ptr
     integer(CFI_attribute_t) attribute
@@ -156,7 +169,7 @@ contains
     attribute = ptr%attribute
   end function
 
-  module function lower_bound(CFI_cdesc)
+  function lower_bound(CFI_cdesc)
     type(*), dimension(..), intent(in) :: CFI_cdesc
     type(CFI_cdesc_t), pointer :: ptr
     integer(CFI_index_t), allocatable :: lower_bound(:)
@@ -164,7 +177,7 @@ contains
     lower_bound = ptr%dim(:)%lower_bound
   end function
 
-  module function extent(CFI_cdesc)
+  function extent(CFI_cdesc)
     type(*), dimension(..), intent(in) :: CFI_cdesc
     type(CFI_cdesc_t), pointer :: ptr
     integer(CFI_index_t), allocatable :: extent(:)
@@ -172,7 +185,7 @@ contains
     extent = ptr%dim(:)%extent
   end function
 
-  module function sm(CFI_cdesc)
+  function sm(CFI_cdesc)
     type(*), dimension(..), intent(in) :: CFI_cdesc
     type(CFI_cdesc_t), pointer :: ptr
     integer(CFI_index_t), allocatable :: sm(:)

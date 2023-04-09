@@ -31,7 +31,7 @@ program main
 
   block 
     type(stuff_t), pointer :: f_base_addr
-    call c_f_pointer(c_base_addr, f_base_addr )  ! not needed
+    call c_f_pointer(c_base_addr, f_base_addr )  ! just a demo -- probably not needed anymore
   end block
 
 contains
@@ -39,8 +39,11 @@ contains
   function unlim_poly_alloc(mold) result(c_allocated)
     type(*), intent(inout) :: mold(..)
     type(c_ptr) c_allocated
-    ! c_allocated = c_allocate(c_sizeof(mold)) ! missing gfortran feature: Fortran 2018 allows assumed-type arguments of c_sizeof
+#ifdef __GFORTRAN__
     c_allocated = c_null_ptr
+#elif
+    c_allocated = c_allocate(c_sizeof(mold)) ! missing gfortran feature: Fortran 2018 allows assumed-type arguments of c_sizeof
+#endif
   end function
 
 end program
