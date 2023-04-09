@@ -1,7 +1,7 @@
 ISO_Fortran_binding_m
 =====================
 
-Fortran interface to the Fortran standard header file "ISO_Fortran_binding.h."
+Fortran interface to the Fortran standard C header file "ISO_Fortran_binding.h."
 
 Downloading and Building
 ------------------------
