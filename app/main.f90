@@ -1,6 +1,6 @@
 program main
   use iso_c_binding, only : c_size_t, c_ptr, c_sizeof, c_f_pointer, c_int, c_null_ptr
-  use iso_fortran_binding_m, only : CFI_attribute_t, CFI_type_t, CFI_rank_t, CFI_index_t, CFI_establish_
+  use iso_fortran_binding_m, only : CFI_attribute_t, CFI_type_t, CFI_rank_t, CFI_index_t, CFI_establish_, cfi_sizeof
   implicit none
 
   interface
@@ -39,11 +39,7 @@ contains
   function unlim_poly_alloc(mold) result(c_allocated)
     type(*), intent(inout) :: mold(..)
     type(c_ptr) c_allocated
-#ifdef __GFORTRAN__
-    c_allocated = c_null_ptr
-#elif
-    c_allocated = c_allocate(c_sizeof(mold)) ! missing gfortran feature: Fortran 2018 allows assumed-type arguments of c_sizeof
-#endif
+    c_allocated = c_allocate(cfi_sizeof(mold)) ! mimic c_sizeof because gfortran doesn't yet support type(*) argument
   end function
 
 end program

@@ -193,4 +193,12 @@ contains
     sm = ptr%dim(:)%sm
   end function
 
+  function cfi_sizeof(CFI_cdesc)
+    type(*), dimension(..), intent(in) :: CFI_cdesc
+    type(CFI_cdesc_t), pointer :: ptr
+    integer(CFI_index_t) cfi_sizeof
+    call c_f_pointer(CFI_cdesc_t(CFI_cdesc), ptr)
+    cfi_sizeof = ptr%elem_len  * product(ptr%dim(:)%extent)
+  end function
+
 end module iso_fortran_binding_m
