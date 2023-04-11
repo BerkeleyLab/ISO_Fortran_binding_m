@@ -198,7 +198,7 @@ contains
     type(CFI_cdesc_t), pointer :: ptr
     integer(CFI_index_t) cfi_sizeof
     call c_f_pointer(CFI_cdesc_t(CFI_cdesc), ptr)
-    cfi_sizeof = ptr%elem_len  * product(ptr%dim(:)%extent)
+    cfi_sizeof = product(ptr%dim(1:ptr%rank)%extent)*ptr%elem_len 
   end function
 
 end module iso_fortran_binding_m
