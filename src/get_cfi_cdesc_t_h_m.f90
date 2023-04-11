@@ -8,7 +8,7 @@ module get_cfi_cdesc_t_h_m
       import c_ptr
       implicit none
       type(*), dimension(..), intent(in), target :: stuff
-      type(c_ptr) cfi_cdesc
+      type(c_ptr), target :: cfi_cdesc
     end function
 
   end interface
