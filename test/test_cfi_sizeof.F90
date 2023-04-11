@@ -25,8 +25,8 @@ contains
     type(test_result_t), allocatable :: test_results(:)
 
     test_results = [ &
-      test_result_t("returns c_sizeof for a multidimensional array", check_cfi_sizeof_array()), &
-      test_result_t("returns c_sizeof for a scalar", check_cfi_sizeof_scalar()) &
+      test_result_t("returning c_sizeof for a multidimensional array", check_cfi_sizeof_array()), &
+      test_result_t("returning c_sizeof for a scalar", check_cfi_sizeof_scalar()) &
     ]
   end function
 
