@@ -3,7 +3,7 @@ module iso_fortran_binding_m
   use iso_c_binding, only : c_ptr, c_size_t, c_int, c_int8_t, c_int16_t, c_f_pointer, c_ptrdiff_t
 #elif defined(NAGFOR)
   use iso_c_binding, only : c_ptr, c_size_t, c_int, c_int8_t, c_int16_t, c_f_pointer, c_long
-#elif defined(NVHPC)
+#else !if defined(NVHPC)
   use iso_c_binding, only : c_ptr, c_size_t, c_int, c_int8_t, c_int16_t, c_f_pointer, c_ptrdiff_t
 #endif
   use get_cfi_cdesc_t_h_m, only : get_cfi_cdesc_t
@@ -19,7 +19,7 @@ module iso_fortran_binding_m
   integer, parameter :: CFI_rank_t = c_int8_t
   integer, parameter :: CFI_attribute_t = c_int8_t
   integer, parameter :: CFI_type_t = c_int16_t
-#elif defined(NVHPC)
+#else !if defined(NVHPC)
   integer, parameter :: CFI_index_t = c_ptrdiff_t
   integer, parameter :: CFI_rank_t = c_int8_t
   integer, parameter :: CFI_attribute_t = c_int8_t
@@ -44,7 +44,7 @@ module iso_fortran_binding_m
     integer(CFI_rank_t) rank
     integer(CFI_attribute_t) attribute
     integer(CFI_type_t) type
-#elif defined(NVHPC)
+#else !if defined(NVHPC)
     integer(CFI_rank_t) rank
     integer(CFI_type_t) type
     integer(CFI_attribute_t) attribute
