@@ -12,7 +12,7 @@ cd ISO_fortran_binding_m
 
 ### GCC
 ```
-fpm build
+FPM_CC=gfortran fpm test
 ```
 
 ### NAG
