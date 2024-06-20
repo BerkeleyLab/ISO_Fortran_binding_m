@@ -17,7 +17,7 @@ Version: Tested for GCC Version 13
 FPM_CC=gcc fpm test
 ```
 
-Note: Apple users may need to fix their path to ensure that the `gcc` that is used is the GNU `gcc`. You can also use the command
+Note: Apple users may need to fix their path to ensure that the `gcc` that is used is the GNU `gcc`. The following command also works and avoids the name clash between the Apple Clang `gcc` and the GNU `gcc`. If the Apple Clang `gcc` is accidentally used, an error will likely occur around not being able to find `ISO_Fortran_binding.h`
 
 ```
 FPM_CC=gfortran fpm test
