@@ -11,6 +11,14 @@ cd ISO_fortran_binding_m
 ```
 
 ### GCC
+Version: Tested for GCC Version 13
+
+```
+FPM_CC=gcc fpm test
+```
+
+Note: Apple users may need to fix their path to ensure that the `gcc` that is used is the GNU `gcc`. You can also use the command
+
 ```
 FPM_CC=gfortran fpm test
 ```
