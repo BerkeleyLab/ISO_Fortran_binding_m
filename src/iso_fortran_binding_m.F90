@@ -1,18 +1,17 @@
 module iso_fortran_binding_m
-#ifdef __GFORTRAN__
   use iso_c_binding, only : c_ptr, c_size_t, c_int, c_int8_t, c_int16_t, c_f_pointer, c_ptrdiff_t
-#elif defined(NAGFOR)
+#ifdef NAGFOR
   use iso_c_binding, only : c_ptr, c_size_t, c_int, c_int8_t, c_int16_t, c_f_pointer, c_long
 #endif
   use get_cfi_cdesc_t_h_m, only : get_cfi_cdesc_t
   implicit none
 
-#ifdef __GFORTRAN__
   integer, parameter :: CFI_index_t = c_ptrdiff_t 
   integer, parameter :: CFI_rank_t = c_int8_t
   integer, parameter :: CFI_attribute_t = c_int8_t
   integer, parameter :: CFI_type_t = c_int16_t
-#elif defined(NAGFOR)
+
+#ifdef NAGFOR
   integer, parameter :: CFI_index_t = c_long
   integer, parameter :: CFI_rank_t = c_int8_t
   integer, parameter :: CFI_attribute_t = c_int8_t
@@ -29,15 +28,9 @@ module iso_fortran_binding_m
     type(c_ptr) base_addr
     integer(c_size_t) elem_len
     integer(c_int) version
-#ifdef __GFORTRAN__
     integer(CFI_rank_t) rank
     integer(CFI_attribute_t) attribute
     integer(CFI_type_t) type
-#elif defined(NAGFOR)
-    integer(CFI_rank_t) rank
-    integer(CFI_attribute_t) attribute
-    integer(CFI_type_t) type
-#endif
     type(CFI_dim_t), dimension(15) :: dim
   end type
   
