@@ -1,3 +1,5 @@
+// Copyright (c), The Regents of the University of California
+// Terms of use are as specified in LICENSE.txt
 #include <stdio.h>
 #include "get_cfi_cdesc_t.h"
 

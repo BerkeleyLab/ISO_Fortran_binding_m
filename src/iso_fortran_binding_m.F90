@@ -1,3 +1,5 @@
+! Copyright (c), The Regents of the University of California
+! Terms of use are as specified in LICENSE.txt
 module iso_fortran_binding_m
 #ifdef __GFORTRAN__
   use iso_c_binding, only : c_ptr, c_size_t, c_int, c_int8_t, c_int16_t, c_f_pointer, c_ptrdiff_t

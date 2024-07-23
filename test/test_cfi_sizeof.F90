@@ -1,3 +1,5 @@
+! Copyright (c), The Regents of the University of California
+! Terms of use are as specified in LICENSE.txt
 module cfi_sizeof_test_m
   !! Unit tests for cfi_sizeof function
   use test_m, only : test_t, test_result_t

@@ -1,3 +1,5 @@
+// Copyright (c), The Regents of the University of California
+// Terms of use are as specified in LICENSE.txt
 #include "cfi_function_wrappers.h"
 
 void *cfi_address_(const CFI_cdesc_t *dv, const CFI_index_t subscripts[]){

@@ -1,3 +1,5 @@
+! Copyright (c), The Regents of the University of California
+! Terms of use are as specified in LICENSE.txt
 program main
   use iso_c_binding, only : c_size_t, c_ptr, c_sizeof, c_f_pointer, c_int, c_null_ptr
   use iso_fortran_binding_m, only : CFI_attribute_t, CFI_type_t, CFI_rank_t, CFI_index_t, CFI_establish_, cfi_sizeof

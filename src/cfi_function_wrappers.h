@@ -1,3 +1,5 @@
+// Copyright (c), The Regents of the University of California
+// Terms of use are as specified in LICENSE.txt
 #ifndef __CFI_FUNCTION_WRAPPERS_H__
 #define __CFI_FUNCTION_WRAPPERS_H__
 
