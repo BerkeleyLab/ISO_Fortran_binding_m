@@ -1,3 +1,5 @@
+! Copyright (c), The Regents of the University of California
+! Terms of use are as specified in LICENSE.txt
 module get_cfi_cdesc_t_h_m
   use iso_c_binding, only : c_ptr
   implicit none
