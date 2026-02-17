@@ -5,7 +5,7 @@ This repository provides an interface to the `ISO_Fortran_binding.h` C header fi
 The interface is defined in the repository's [`iso_fortran_binding_m`] module and includes definitions of 
 
 * Kind parameters: `CFI_index_t`, `CFI_rank_t`, `CFI_attribute_t`, and `CFI_type_t`;
-* C-interoperable dervied types: `CFI_dim_t` and `CFI_cdesc_t`; and
+* C-interoperable derived types: `CFI_dim_t` and `CFI_cdesc_t`; and
 * Wrappers for standard functions: `cfi_address_`, `cfi_allocate_`, `cfi_deallocate_`, `cfi_establish_`, `cfi_establish`, `cfi_is_contiguous`, `cfi_section_`, `cfi_select_part_`, and `cfi_setpointer_`; and
 * Utility functions: `base_addr`, `elem_len`, `version`, `rank`, `type`, `attribute`, and `lower_bound`, `extent`, `sm`, and `cfi_sizeof`
 
